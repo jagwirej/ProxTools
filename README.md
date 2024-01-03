@@ -3,6 +3,15 @@ Scripts written for an Ubuntu VM or dedicated machine to manage a clustered Prox
 The biggest requested feature being a Load Balancer to balance the CPU load across a clustered ProxMox environment.
 
 ----------
+How it Works:
+
+Without digging too much into the weeds of it all, the loadbalancenodes script calls other scripts to make a couple determinations:
+
+1. It calls getmostusednode.sh to determine which node in your cluster has the highest percentage of CPU usage
+2. It calls getleastusednode.sh to determine which node in your cluster has the lowest percentage of CPU usage
+3. It then calls getmostusedvm.sh to determine which VM has the highest percentage of CPU usage
+4. Finally, it migrates the highest used VM from the highest used node to the lowest used node
+----------
 
 Setup Instructions:
 
@@ -14,7 +23,11 @@ Setup Instructions:
 
 3. Copy these scripts into /proxtools on the management machine/vm so all filepaths will work correctly.
 
-4. Schedule a cronjob to run /proxtools/loadbalance/loadbalancenodes.sh at whatever interval you like (my recommendation would be every 15 minutes).
+4. Update the "nodelist" array in listnodes.sh to match the hostnames of your ProxMox nodes
+
+5. Install mpstat on each of your ProxMox nodes (to measure cpu usage)
+
+6. Schedule a cronjob to run /proxtools/loadbalance/loadbalancenodes.sh at whatever interval you like (my recommendation would be every 15 minutes).
 
 
 --------------------
