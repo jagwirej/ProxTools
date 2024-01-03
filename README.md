@@ -33,6 +33,10 @@ Setup Instructions:
 --------------------
 Special Thanks:
 
+Sid3b00m
+
+For getting the ball rolling with ProxMox. This project would have never begun if you hadn't hounded me to build a cluster. :D
+
 
 @inthebrilliantblue
 
