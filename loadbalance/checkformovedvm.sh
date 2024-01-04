@@ -1,5 +1,5 @@
 vm=$(cat /proxtools/loadbalance/lastmigratedvm.txt)
-node=$(cat /proxtools/loadbalance/lasthighnode.txt)
+node=$(cat /proxtools/loadbalance/lastlownode.txt)
 success=$(ssh root@$node qm list | grep $vm | awk '{if(NR>0)print $1}')
 if [ -n "$success" ]; then
 	echo $success

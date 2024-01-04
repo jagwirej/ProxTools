@@ -42,8 +42,15 @@ for vm in "${vms[@]}"; do
 	((i++))
 done
 
-#Write last migrated vm to file
-echo "$maxvm" > "/proxtools/loadbalance/lastmigratedvm.txt"
+if [ "$maxvm" = "" ]; then
+	#Return NULL if no output for error handling
+        echo "NULL"
 
-#Return highest used vmid
-echo $maxvm
+	#Write last migrated vm to file
+	echo "NULL" > "/proxtools/loadbalance/lastmigratedvm.txt"
+else
+        #Write last migrated vm to file
+	echo "$maxvm" > "/proxtools/loadbalance/lastmigratedvm.txt"
+	#Return highest used vmid
+	echo $maxvm
+fi
