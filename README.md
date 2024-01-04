@@ -27,8 +27,10 @@ Without digging too much into the weeds of it all, the loadbalancenodes script c
 
 1. It calls getmostusednode.sh to determine which node in your cluster has the highest percentage of CPU usage
 2. It calls getleastusednode.sh to determine which node in your cluster has the lowest percentage of CPU usage
-3. It then calls getmostusedvm.sh to determine which VM has the highest percentage of CPU usage
-4. Finally, it migrates the highest used VM from the highest used node to the lowest used node
+3. If the difference in percentage between the highest and lowest used node is lower than 5%, it will exit the script
+4. It then calls getmostusedvm.sh to determine which VM has the highest percentage of CPU usage
+5. It checks to see if the last migration request has completed. Will exit script if not
+6. Finally, it migrates the highest used VM from the highest used node to the lowest used node
 
 --------------------
 Special Thanks:
