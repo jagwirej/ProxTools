@@ -12,7 +12,7 @@ for node in "${nodes[@]}"; do
         name=$node
 
         #Get CPU usage of node
-        usage=$(ssh root@$name mpstat 1 1 | awk 'NR>3 && $12 ~ /[0-9.]+/ { print 100 - $13; exit }')
+        usage=$(bash /proxtools/loadbalance/getweightedscore.sh $name)
 
         #Convert float point to integer for comparison
         usage=$(printf "%.0f" $usage)
