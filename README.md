@@ -25,10 +25,12 @@ How the Load Balancer Works:
 
 Without digging too much into the weeds of it all, the loadbalancenodes script calls other scripts to make a couple determinations:
 
-1. It calls getmostusednode.sh to determine which node in your cluster has the highest percentage of CPU usage
-2. It calls getleastusednode.sh to determine which node in your cluster has the lowest percentage of CPU usage
-3. If the difference in percentage between the highest and lowest used node is lower than 5%, it will exit the script
-4. It then calls getmostusedvm.sh to determine which VM has the highest percentage of CPU usage
+**Scoring system has now changed to equally weigh CPU and RAM usage when determining the highest/lowest used node and vm**
+
+1. It calls getmostusednode.sh to determine which node in your cluster has the highest score (both RAM and CPU usage equally weighed)
+2. It calls getleastusednode.sh to determine which node in your cluster has the lowest score (both RAM and CPU usage equally weighed)
+3. If the difference in score between the highest and lowest used node is lower than 5%, it will exit the script
+4. It then calls getmostusedvm.sh to determine which VM has the highest score (both RAM and CPU usage equally weighed)
 5. It checks to see if the last migration request has completed. Will exit script if not
 6. Finally, it migrates the highest used VM from the highest used node to the lowest used node
 
