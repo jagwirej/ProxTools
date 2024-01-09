@@ -8,7 +8,7 @@ lastvm=$(cat "/proxtools/loadbalance/lastmigratedvm.txt")
 lastvm=$(($lastvm + 0))
 
 #Get all running vms on node given as a parameter
-vmstring=$(bash /proxtools/loadbalance/getvmsonnode.sh $node)
+vmstring=$(bash /proxtools/list/getvmsonnode.sh $node)
 
 vms=($vmstring)
 

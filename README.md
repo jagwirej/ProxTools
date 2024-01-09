@@ -14,7 +14,10 @@ Setup Instructions:
 
 3. Copy these scripts into /proxtools on the management machine/vm so all filepaths will work correctly.
 
-4. Update the "nodelist" array in listnodes.sh to match the hostnames of your ProxMox nodes.
+4. Update the vars.config file.
+		Fill out ManagerVMID if your dedicated machine is running on the ProxMox Cluster (for shutdown tools).
+		Fill out OtherServers if you have any nodes that do not run VMs, but need to be shutdown in bulk.
+		Fill out Servers with a list of any nodes that run VMs.
 
 5. Install mpstat on each of your ProxMox nodes (to measure cpu usage).
 

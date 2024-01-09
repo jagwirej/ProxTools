@@ -1,12 +1,11 @@
-#Get list of nodes from listnodes.sh
-nodes=($(bash listnodes.sh))
+. /proxtools/vars.config
 
 #If this boolean remains false, all nodes are balanced
 balance=false
 
 i=0
 
-for node in "${nodes[@]}"; do
+for node in "${Servers[@]}"; do
 
         #Assign name to variable for ease of use
         name=$node
@@ -57,8 +56,8 @@ if [ $balance == "false" ]; then
 fi
 
 
-#If delta is 5 or greater, then pass on the highest used node
-if [ $usageDelta -ge 5 ]; then
+#If delta is 3 or greater, then pass on the highest used node
+if [ $usageDelta -ge 3 ]; then
 
 	#At least some server usages were unique, so return result
 	if [ $balance == "true" ]; then
