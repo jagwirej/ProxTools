@@ -7,17 +7,17 @@ The biggest requested feature being a Load Balancer to balance the CPU load acro
 Setup Instructions:
 
 1. Have a dedicated VM or machine running Ubuntu.
-     This machine can run inside of the ProxMox cluster or on its own dedicated hardware.
-     For some features, it is recommended that this be on dedicated hardware not hosted on your ProxMox cluster.
+     - This machine can run inside of the ProxMox cluster or on its own dedicated hardware.
+     - For some features, it is recommended that this be on dedicated hardware not hosted on your ProxMox cluster.
 
 2. Setup passwordless SSH between this machine/vm and each individual node in your cluster that will be running VMs.
 
 3. Copy these scripts into /proxtools on the management machine/vm so all filepaths will work correctly.
 
 4. Update the vars.config file.
-		Fill out ManagerVMID if your dedicated machine is running on the ProxMox Cluster (for shutdown tools).
-		Fill out OtherServers if you have any nodes that do not run VMs, but need to be shutdown in bulk.
-		Fill out Servers with a list of any nodes that run VMs.
+	- Fill out ManagerVMID if your dedicated machine is running on the ProxMox Cluster (for shutdown tools).
+	- Fill out OtherServers if you have any nodes that do not run VMs, but need to be shutdown in bulk.
+	- Fill out Servers with a list of any nodes that run VMs.
 
 5. Install mpstat on each of your ProxMox nodes (to measure cpu usage).
 
