@@ -8,7 +8,7 @@ if [ $lastmove = "NULL" ]; then
 	echo "Last High VM: $lasthighvm"
 	echo
 	echo -e  "Last node has not finished migrating, or an error has occurred.\nLast Low Node: $lastlownode.\nLast High VM: $lasthighvm.\n" > "/proxtools/loadbalance/log.txt"
-	if [ "$lasthighvm" = "NULL" ] || [ "$lastlownode" = "NULL" ]; then
+	if [ "$lasthighvm" = "NULL" ] || [ "$lastlownode" = "NULL" ] || [ "$lastlownode" = "NULL NULL" ]; then
 		echo "Either lasthighvm or lastlownode is NULL, continuing."
 		echo
 	else
