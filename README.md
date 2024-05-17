@@ -18,6 +18,8 @@ Setup Instructions:
 	- Fill out ManagerVMID if your dedicated machine is running on the ProxMox Cluster (for shutdown tools).
 	- Fill out OtherServers if you have any nodes that do not run VMs, but need to be shutdown in bulk.
 	- Fill out Servers with a list of any nodes that run VMs.
+ 	- Fill out EmailFrom with the from address for email alerts
+  	- Fill out EmailRecipients with any email addresses you would like alerts sent to 
 
 5. Install mpstat on each of your ProxMox nodes (to measure cpu usage).
 
