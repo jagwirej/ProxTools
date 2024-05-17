@@ -14,7 +14,7 @@ if [ $lastmove = "NULL" ]; then
         echo
         body="Last node has not finished migrating, or an error has occurred.\nLast Low Node: $lastlownode.\nLast High VM: $lasthighvm.\n"
         echo -e  "${body}" > "/proxtools/loadbalance/log.txt"
-        echo -e  "From: servicealerts@cpsb.org\nTo: ${EmailRecipients}\nSubject: ProxManager Alert\n\n${body}" | ssmtp ${EmailRecipients}
+        echo -e  "From: ${EmailFrom}\nTo: ${EmailRecipients}\nSubject: ProxManager Alert\n\n${body}" | ssmtp ${EmailRecipients}
 
         if [ "$lasthighvm" = "NULL" ] || [ "$lastlownode" = "NULL" ] || [ "$lastlownode" = "NULL NULL" ]; then
                 echo "Either lasthighvm or lastlownode is NULL, continuing."
