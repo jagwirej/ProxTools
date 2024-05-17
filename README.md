@@ -21,7 +21,9 @@ Setup Instructions:
 
 5. Install mpstat on each of your ProxMox nodes (to measure cpu usage).
 
-6. Schedule a cronjob to run /proxtools/loadbalance/loadbalancenodes.sh at whatever interval you like (my recommendation would be every 15 minutes).
+6. Install and configure ssmtp on the management machine/vm and configure /etc/ssmtp/ssmtp.conf accordingly for your environment
+
+7. Schedule a cronjob to run /proxtools/loadbalance/loadbalancenodes.sh at whatever interval you like (my recommendation would be every 15 minutes).
 
 ----------
 How the Load Balancer Works:
