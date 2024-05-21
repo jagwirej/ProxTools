@@ -29,7 +29,7 @@ if [[ "$lastmove" == "Currently Migrating" ]]; then
         echo "Last Low Node: $lastlownode"
         echo "Last High VM: $lasthighvm"
         echo
-        $SDIR/emailalert.sh "CurrentMigration" "$lastmove" "$lastlownode" "ProxManager Alert"
+        $SDIR/emailalert.sh "CurrentMigration" "$lasthighvm" "$lastlownode" "ProxManager Alert"
 
         if [ "$lasthighvm" = "NULL" ] || [ "$lastlownode" = "NULL" ] || [ "$lastlownode" = "NULL NULL" ]; then
                 echo "Either lasthighvm or lastlownode is NULL, continuing."
@@ -47,7 +47,7 @@ elif [[ "$lastmove" == "Currently locked: Backup" ]]; then
 else
         #Failed to migrate
         echo "Failed to migrate"
-        $SDIR/emailalert.sh "FailedToMigrate" "$lastmove" "$lastlownode" "ProxManager Alert"
+        $SDIR/emailalert.sh "FailedToMigrate" "$lasthighvm" "$lastlownode" "ProxManager Alert"
 fi
 
 
