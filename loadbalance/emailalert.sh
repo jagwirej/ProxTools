@@ -43,7 +43,7 @@ if [ $laststatus == $status ]; then
         newemailcount=$(expr $lastcount + 1)
 else
         lastcount=0
-        newemailcount=1
+        newemailcount=0
 fi
 
 
