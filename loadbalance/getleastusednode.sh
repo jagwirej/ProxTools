@@ -10,6 +10,11 @@ for node in "${Servers[@]}"; do
         #Assign name to variable for ease of use
         name=$node
 
+ 	 #Checks if node is in maintenance mode
+        if [[ $name == ${MaintenanceMode} ]]; then
+                continue
+        fi
+
         #Get CPU usage of node
         usage=$(bash /proxtools/loadbalance/getweightedscore.sh $name)
 
