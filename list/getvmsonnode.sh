@@ -1,4 +1,8 @@
-input=$1
+#!/bin/bash
 
-#ssh root@${input} qm list | grep running | awk '{if(NR>1)print $1}'
-ssh root@${input} qm list | grep running | awk '{if(NR>0)print $1}'
+#Get vars
+. /proxtools/vars.config
+
+server=$1
+
+ssh ${SSHUser}@${server} qm list | grep running | awk '{if(NR>0)print $1}'

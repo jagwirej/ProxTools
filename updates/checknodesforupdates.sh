@@ -2,12 +2,13 @@
 
 #Get vars
 . /proxtools/vars.config
+
 emailbody="The following nodes have pending updates:\n\n"
 
 for node in "${AllServers[@]}"; do
 	#echo "Node:" $node
 
-	Updates=$(ssh root@$node 'apt-get update -qq && apt list --upgradable 2>/dev/null | grep -v "Listing..."')
+	Updates=$(ssh ${SSHUser}@$node 'apt-get update -qq && apt list --upgradable 2>/dev/null | grep -v "Listing..."')
 	UpdateCount=$(echo -e "$Updates" | wc -l)
 	ActualCount=$(($UpdateCount - 1))
 	if [ $ActualCount -gt 0 ]; then

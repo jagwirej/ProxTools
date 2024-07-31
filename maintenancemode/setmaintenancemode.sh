@@ -4,7 +4,7 @@
 . /proxtools/vars.config
 
 #Sets the ssh user
-remote_user="root"
+remote_user=${SSHUser}
 
 #Default when no node is in maintenance mode
 configname='MaintenanceMode=""'

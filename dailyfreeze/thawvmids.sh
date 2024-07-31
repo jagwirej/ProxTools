@@ -1,3 +1,6 @@
+#!/bin/bash
+
+#Get vars
 . /proxtools/vars.config
 
 for server in "${Servers[@]}"; do

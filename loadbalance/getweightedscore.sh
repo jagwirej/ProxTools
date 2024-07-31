@@ -1,5 +1,10 @@
+#!/bin/bash
+
+#Get vars
+. /proxtools/vars.config
+
 # Remote server details
-remote_user="root"
+remote_user=${SSHUser}
 remote_host=$1
 
 # Function to calculate weighted score
@@ -19,11 +24,11 @@ get_remote_usage() {
 }
 
 # Set equal weights for CPU and RAM
-cpu_weight=0.5
-ram_weight=0.5
+cpu_weight=${NodeCPUWeight}
+ram_weight=${NodeRAMWeight}
 
 # Number of iterations
-iterations=5
+iterations=${ItCount}
 
 # Variable to store the total score
 total_score=0

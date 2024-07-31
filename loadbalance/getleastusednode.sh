@@ -1,3 +1,6 @@
+#!/bin/bash
+
+#Get vars
 . /proxtools/vars.config
 
 #If this boolean remains false, all nodes are balanced
@@ -10,13 +13,13 @@ for node in "${Servers[@]}"; do
         #Assign name to variable for ease of use
         name=$node
 
- 	 #Checks if node is in maintenance mode
-        if [[ $name == ${MaintenanceMode} ]]; then
-                continue
-        fi
+	#Checks if node is in maintenance mode
+	if [[ $name == ${MaintenanceMode} ]]; then
+		continue
+	fi
 
         #Get CPU usage of node
-        usage=$(bash /proxtools/loadbalance/getweightedscore.sh $name)
+        usage=$(bash ${DIR}loadbalance/getweightedscore.sh $name)
 
         #Convert float point to integer for comparison
         usage=$(printf "%.0f" $usage)
@@ -61,8 +64,8 @@ if [ $balance == "false" ]; then
 fi
 
 
-#If delta is 5 or greater, then pass on the lowest used node
-if [ $usageDelta -ge 3 ]; then
+#If delta is the threshold or greater, then pass on the lowest used node
+if [ $usageDelta -ge ${UsageDelta} ]; then
 
 	#At least some server usages were unique, so return result
 	if [ $balance == "true" ]; then
@@ -70,6 +73,6 @@ if [ $usageDelta -ge 3 ]; then
 	fi
 else
 
-	#If delta is below 5, pass NULL
+	#If delta is below threshold, pass NULL
 	echo "NULL"
 fi
